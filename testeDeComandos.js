@@ -9,12 +9,11 @@
 		game.load.image("fraseTesteComandos", "fraseTesteComandos.png");
 		game.load.spritesheet("spriteD", "spriteD.png", 143,144); 
 		game.load.spritesheet("spriteL", "spriteL.png", 144,144);
-		game.load.spritesheet("btnSom", "btnSom.png", 50,56);
+		carregarSom(false);
 		
 	};
 	
 	this.create = function () {
-		
 		
 		game.add.tileSprite(0, 0, 1000, 750, "testeComandos");
 		frase = game.add.sprite(5,100, "fraseTesteComandos");	
@@ -32,9 +31,6 @@
 		spriteL.animations.add("semL", [0], 1, true);
 		spriteL.animations.add("comL", [1], 1, true);
 		
-	
-		
-
 		botao = game.add.sprite(400,605, "botao");	
 		botao.inputEnabled = true;
 		
@@ -46,23 +42,10 @@
 		
 		botao.events.onInputDown.add(mouse);
 		
-		btnSom = game.add.sprite(10,690, "btnSom");
-		btnSom.inputEnabled = true;
-		btnSom.input.useHandCursor = true;
-
-		btnSom.animations.add("ligado", [0], 1, true);
-		btnSom.animations.add("desligado", [1], 1, true);
-		btnSom.events.onInputDown.add(mudarSom);
-
-			if(status=="ligado"){
-		//		somComeco.play();
-				
-			}else{
-				somComeco.stop();
-				btnSom.animations.play("desligado");
-			}
+		criarSom();
 		
 		fadeIn();
+		
 	};
 	
 	this.update = function () {
@@ -94,7 +77,8 @@
 
 	
 	function fadeOutAcabou() {
-	
+		
+		somComeco.stop();
 		game.state.start("modoJogo");
 		
 	}

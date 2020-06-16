@@ -32,7 +32,7 @@ function tela1() {
 		game.load.image("fundoTimer", "fundoTimer.png");
 		game.load.audio("birl", "birl.mp3");
 		game.load.audio("dj", "dj.mp3");
-		game.load.spritesheet("btnSom", "btnSom.png", 50,56);
+		carregarSom(true);
 		
 	
 	};
@@ -103,8 +103,6 @@ function tela1() {
 		textoTimer = game.add.text(487, 40, "30", estilo2);
 		textoTimer.visible = false;
 		
-		
-		
 		// countdown
 		countdown = game.time.create();
 		countdownEvent = countdown.add(Phaser.Timer.SECOND * 3.5, endContagem, this);
@@ -114,30 +112,7 @@ function tela1() {
 	//	birl = game.add.audio("birl", 0.2);
 		dj = game.add.audio("dj", 0.2);
 
-	
-		 somComeco.stop();
-		 
-		 
-		 
-		 
-		btnSom = game.add.sprite(10,690, "btnSom");	
-		btnSom.inputEnabled = true;
-		btnSom.input.useHandCursor = true;
-
-		btnSom.animations.add("ligado", [0], 1, true);
-		btnSom.animations.add("desligado", [1], 1, true);
-		btnSom.events.onInputDown.add(mudarSom2);
-
-		
-		 	if(status2=="ligado"){
-				batatadoce.play();
-				
-			}else{
-				batatadoce.stop();
-				
-					btnSom.animations.play("desligado");
-			}	
-		 
+		criarSom();
 	
 		fadeIn();
 	};
@@ -193,7 +168,7 @@ function tela1() {
 			if (progressBarEsq.scale.x >= 1) {
 				progressBarEsq.scale.x = 1;
 				vencedor = "esquerda";
-				
+				somComeco.stop();
 				game.state.start("gameover");
 				
 			}
@@ -231,6 +206,7 @@ function tela1() {
 			if (progressBarDir.scale.x >= 1) {
 				progressBarDir.scale.x = 1; 
 		//		fadeOut(fadeOutAcabou);
+				somComeco.stop();
 				game.state.start("gameover");
 				vencedor = "direita";
 			}
@@ -262,12 +238,12 @@ function tela1() {
 	
 	function textoFoiClicado() {
 	//	dj.play();
-    	batatadoce.stop();
+    	somComeco.stop();
 		game.state.start("menu");
 		
 	}
 	function fadeOutAcabou() {
-	
+		somComeco.stop();
 //		game.state.start("gameover");
 		
 	}
@@ -275,7 +251,7 @@ function tela1() {
   function endTimer(){
 	// Aqui vai oque acontence se o tempo acabar
 	timer.stop();
-	batatadoce.stop();
+	somComeco.stop();
 	game.state.start("perdeu");
 
 	
@@ -294,19 +270,4 @@ function tela1() {
   }
   
 	
-}
-	function mudarSom2 () {
-			if(status2=="ligado"){
-				// travar o som 
-				btnSom.animations.play("desligado");
-				status = "desligado";
-				status2= "desligado";
-				batatadoce.stop();
-			}else{
-				//liberar o som;
-				btnSom.animations.play("ligado");
-				status ="ligado";
-				status2= "ligado";
-				batatadoce.play();
-			}	
-	}		
+}	

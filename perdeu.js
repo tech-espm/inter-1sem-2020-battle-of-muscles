@@ -1,6 +1,8 @@
 ﻿function perdeu() {
 	var texto;
 	var texto2;
+	var gameover;
+	
 	this.preload = function () {
 		game.stage.backgroundColor = "#000000";
 		game.load.image("gameoverIMG", "gameOverImagem.jpg");
@@ -39,7 +41,7 @@
 	};
 	
 	function textoFoiClicado() {
-		
+		gameover.stop();
 		if(qualModo == "tela2"){
 			game.state.start("tela2");
 		}else{
@@ -49,7 +51,7 @@
 		
 	}
 	function texto2FoiClicado() {
-		
+		gameover.stop();
 		game.state.start("modoJogo");
 		
 	}

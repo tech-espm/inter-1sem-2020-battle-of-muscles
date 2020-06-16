@@ -4,10 +4,12 @@ function modoJogo() {
 var comTempo;
 	
 	this.preload = function () {
+		
 		game.load.spritesheet("modoJogo", "modoJogo.png", 1000,750); 
 		game.load.spritesheet("comTempo", "comTempo.png", 271,41); 
 		game.load.spritesheet("semTempo", "semTempo.png", 270,41); 
-		game.load.spritesheet("btnSom", "btnSom.png", 50,56);
+		carregarSom(false);
+		
 	};
 	
 	this.create = function () {
@@ -30,26 +32,9 @@ var comTempo;
 		semTempo.animations.add("clickSemTempo", [1], 1, true);
 		semTempo.events.onInputDown.add(mouse2);
     	game.input.addMoveCallback(p, this);
-	
 		
-
-		btnSom = game.add.sprite(10,690, "btnSom");
-		btnSom.inputEnabled = true;
-		btnSom.input.useHandCursor = true;
-
-		btnSom.animations.add("ligado", [0], 1, true);
-		btnSom.animations.add("desligado", [1], 1, true);
-		btnSom.events.onInputDown.add(mudarSom);
-
-			if(status=="ligado"){
-			//	somComeco.play();
-				
-			}else{
-				somComeco.stop();
-				btnSom.animations.play("desligado");
-			}	
-		 
-
+		criarSom();
+		
 		fadeIn();
 	};
 	
@@ -87,27 +72,23 @@ var comTempo;
 	}
 
 	function fadeOutAcabou() {
+		
+		somComeco.stop();
 		qualModo = "tela1";
 		game.state.start("tela1");
 		
 	}
-		function fadeOutAcabou2() {
+	
+	function fadeOutAcabou2() {
+		
+		somComeco.stop();
 		qualModo = "tela2";
-
 		game.state.start("tela2");
 		
 	}
 	function p(pointer) {
 		
 	}
-	
-	
-function render() {
-
-   // game.debug.text("Over: " + comTempo.input.pointerOver(), 32, 32);
-    game.debug.text(game.input.mouse.locked, 320, 32);
-
-}
 
 //https://phaser.io/examples/v2/input/group-input-events	
 }

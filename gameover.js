@@ -1,6 +1,6 @@
-﻿	var patrick;
+﻿function gameover() {
+	var patrick;
 	var bob;
-function gameover() {
 	
 	var texto;
 	var texto2;
@@ -16,7 +16,6 @@ function gameover() {
 		game.load.image("fundoBaloes", "fundoBaloes.png");
 		game.load.audio("patrick", "patrick.mp3");
 		game.load.audio("bob", "bob.mp3");
-		batatadoce.stop();
 	};
 	
 	this.create = function () {
@@ -91,20 +90,19 @@ function gameover() {
 	function textoFoiClicado() {
 	
 		if(qualModo == "tela2"){
+			quem.stop();
 			game.state.start("tela2");
-			quem.stop();
 		}else{
-			game.state.start("tela1");
 			quem.stop();
+			game.state.start("tela1");
 		}
 		
 	}
 	function texto2FoiClicado() {
 		
-	
+		quem.stop();
 		game.state.start("modoJogo");
 		
-		quem.stop();
 	}
 	
 }

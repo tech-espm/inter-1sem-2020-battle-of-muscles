@@ -14,16 +14,14 @@ function tela2() {
 	
 	this.preload = function () {
 		
-		
 		game.load.spritesheet("fundoTela1", "fundoTela1.jpg", 1000,750); 
 		game.load.image("progressBarEsq", "progressBarEsq.png");
 		game.load.image("progressBarDir", "progressBarDir.png");
 		game.load.spritesheet("patrickPeso", "patrickPeso.png", 500, 422);
 		game.load.spritesheet("bobEsponja", "bobEsponjaPeso.png", 489, 411);
 		game.load.image("progressBar", "progressBar.png");
-	//	game.load.image("fundoTimer", "fundoTimer.png");
-
-
+		carregarSom(true);
+		
 	};
 	
 	this.create = function () {
@@ -80,11 +78,8 @@ function tela2() {
 		
 		estaColidindo = false;
 		
-		somComeco.stop();
-		batatadoce.loop = true;
-		batatadoce.play();
+		criarSom();
 		
-	
 		fadeIn();
 	};
 	
@@ -118,6 +113,7 @@ function tela2() {
 				progressBarEsq.scale.x = 1;
 				vencedor = "esquerda";
 				qualModo = "tela2";
+				somComeco.stop();
 				game.state.start("gameover");
 				
 			}
@@ -156,6 +152,7 @@ function tela2() {
 				progressBarDir.scale.x = 1; 
 		//		fadeOut(fadeOutAcabou);
 				qualModo = "tela2";
+				somComeco.stop();
 				game.state.start("gameover");
 				vencedor = "direita";
 			}
@@ -177,12 +174,12 @@ function tela2() {
 	
 	
 	function textoFoiClicado() {
-		batatadoce.stop();
+		somComeco.stop();
 		game.state.start("menu");
 		
 	}
 	function fadeOutAcabou() {
-	
+		somComeco.stop();
 //		game.state.start("gameover");
 		
 	}
