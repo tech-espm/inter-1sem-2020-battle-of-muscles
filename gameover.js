@@ -25,11 +25,11 @@
 
 		
 		var estilo = {
-			font: "normal 16px 'Press Start 2P Regular'",
+			font: "normal 16px 'Press Start 2P'",
 			fill: "#ffffff"
 		};
 		var estilo2 = {
-			font: "normal 16px 'Press Start 2P Regular'",
+			font: "normal 16px 'Press Start 2P'",
 			fill: "red"
 		};
 		
