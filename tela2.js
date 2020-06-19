@@ -31,11 +31,11 @@ function tela2() {
 		fundoProgressBar = game.add.image(fundoProgressBarX, fundoProgressBarY, "progressBar");
 
 		var estilo = {
-			font: "normal 18px 'Press Start 2P Regular' ",
+			font: "normal 18px 'Press Start 2P' ",
 			fill: "#ffffff"
 		};
 		var estilo2 = {
-			font: "normal 30px 'Press Start 2P Regular' ",
+			font: "normal 30px 'Press Start 2P' ",
 			fill: "#ffffff"
 		};
 		
